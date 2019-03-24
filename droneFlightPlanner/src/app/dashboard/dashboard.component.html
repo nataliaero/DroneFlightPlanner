@@ -1,17 +1,41 @@
 <div>
-  <div class="header">
+  <div class="title">
     <p>Your Drone Flight Planner: </p>
-    <p *ngIf="mapName">{{mapName}}</p>
+    <p>{{currentMapName}}</p>
   </div>
-  <canvas class="canvasMap" id="imgCanvas"
-    (mouseup)="addDot($event)"
-    (mouseover)="drawLine($event)">
-  </canvas>
-  <div>
-    <p>Enter map Name:</p>
-    <input type="search" class="robot-search" placeholder="Enter map name..." #box (keyup)="onKey(box.value)">
-    <button [disabled]="buttonDisabled" (click)=saveMap()>Save Map</button>
+
+  <div class="main">
+    <div class="canvas-box">
+      <canvas class="canvasMap" id="imgCanvas"
+        (mouseup)="addDot($event)">
+      </canvas>
+      <div class="edit-map">
+        <div class="save-box">
+          <div><input type="search" placeholder="Enter map name..." (keyup)="onKey()" [(ngModel)]="currentMapName"></div>
+          <div><button [disabled]="buttonDisabled" class="button-saveMap" (click)=saveMap()>Save Map</button></div>
+        </div>
+        <mat-icon mat-list-icon (click)="clearCanvas()">clear</mat-icon>
+      </div>
+
+
+    </div>
+
+    <div class="mapInfo">
+      <mat-list>
+        <p mat-subheader>List of Maps created:</p>
+        <mat-list-item *ngFor="let map of maps; index as i" (click)="uploadMap(i)" class="map-list-item">
+          <mat-icon mat-list-icon>map</mat-icon>
+          <h4 mat-line>{{map.name}}</h4>
+          <p mat-line> {{map.date | date}} </p>
+        </mat-list-item>
+      </mat-list>
+    </div>
+
   </div>
+
+
+
+
 
 </div>
 

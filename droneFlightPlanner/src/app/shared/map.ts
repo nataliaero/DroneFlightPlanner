@@ -2,5 +2,6 @@ import { Line } from './line';
 
 export class Map {
   name: string;
-  lines: [Line];
+  date: number;
+  lines: Line[];
 }

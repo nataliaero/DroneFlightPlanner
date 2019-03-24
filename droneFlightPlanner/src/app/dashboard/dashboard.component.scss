@@ -1,10 +1,78 @@
+$primary: rgb(208, 208, 208);
+$primary-light: lighten($primary, 7%);
+
 .canvasMap {
   background-image: url('https://media.wired.com/photos/59269cd37034dc5f91bec0f1/master/pass/GoogleMapTA.jpg');
   margin: 0;
   padding: 0;
 }
 
-.header {
+.title {
   display: flex;
   flex-direction: row;
+  font-size: 1rem;
+  margin: 20px 0;
+  justify-content: center;
+  align-items: center;
 }
+
+.title p{
+  margin: 0 5px;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 1rem;
+  margin: 0 10px;
+}
+
+.canvas-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.save-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.edit-map {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.button-saveMap {
+  font-size: 1rem;
+  outline: none;
+  padding: 5px 10px;
+  border-radius: 10px;
+  width: 100px;
+  align-self: flex-end;
+}
+
+.mapInfo {
+  margin-left: 20px;
+  background-color: $primary;
+  width: 40%;
+  padding: 5px;
+}
+
+.main input {
+  align-self: center;
+  height: 30px;
+  margin-right: 10px;
+  width: 200px;
+  outline: none;
+}
+
+.map-list-item:hover {
+  background-color: $primary-light;
+}
+
