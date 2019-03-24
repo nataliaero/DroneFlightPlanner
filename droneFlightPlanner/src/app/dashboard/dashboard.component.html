@@ -1,9 +1,17 @@
 <div>
-  <div>Title</div>
+  <div class="header">
+    <p>Your Drone Flight Planner: </p>
+    <p *ngIf="mapName">{{mapName}}</p>
+  </div>
   <canvas class="canvasMap" id="imgCanvas"
     (mouseup)="addDot($event)"
     (mouseover)="drawLine($event)">
   </canvas>
+  <div>
+    <p>Enter map Name:</p>
+    <input type="search" class="robot-search" placeholder="Enter map name..." #box (keyup)="onKey(box.value)">
+    <button [disabled]="buttonDisabled" (click)=saveMap()>Save Map</button>
+  </div>
 
 </div>
 

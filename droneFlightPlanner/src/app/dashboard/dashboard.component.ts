@@ -19,6 +19,8 @@ export class DashboardComponent implements OnInit {
   maps: Map[];
   currentMap: Map;
   line: Line;
+  mapName: string;
+  buttonDisabled: boolean;
 
   constructor(@Inject(DOCUMENT) document) {
   }
@@ -27,6 +29,14 @@ export class DashboardComponent implements OnInit {
     const canvas: any = document.getElementById('imgCanvas');
     canvas.width  = 600;
     canvas.height = 400;
+    this.currentMap = {
+      name: '',
+      lines: [this.line]
+    };
+    this.maps = [];
+    this.mapName = '';
+    this.buttonDisabled = true;
+    console.log('***this.currentMap', this.currentMap);
   }
 
   addLine(canvas, currentPosition, lastPosition) {
@@ -43,10 +53,7 @@ export class DashboardComponent implements OnInit {
           initialPoint: lastPosition,
           finalPoint: currentPosition
         };
-        console.log('currentPosition: ', currentPosition)
-        console.log('lastPosition: ', lastPosition)
-
-        // this.currentMap.lines.push(this.line);
+        this.currentMap.lines.push(this.line);
       }
     }
   }
@@ -77,11 +84,31 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-   drawLine(e) {
+  drawLine(e) {
   //   const canvas = document.getElementById('imgCanvas');
   //   mousePos = getMousePos(canvas, e);
   //   if (canvas.getContext) {
 
+  }
+
+  onKey(mapName: string) {
+    this.mapName = mapName;
+    console.log('this.mapName ', this.mapName)
+    if (this.mapName) {
+      this.buttonDisabled = false;
+    } else {
+      this.buttonDisabled = true;
+    }
+  }
+
+  saveMap() {
+    console.log('click!', this.currentMap);
+    this.currentMap.lines.shift();
+    this.maps.push(this.currentMap);
+    this.currentMap = {
+      name: '',
+      lines: [this.line]
+    };
   }
 
 
