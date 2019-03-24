@@ -24,7 +24,7 @@
         <mat-list-item *ngFor="let map of maps; index as i" (click)="uploadMap(i)" class="map-list-item">
           <mat-icon mat-list-icon>map</mat-icon>
           <h4 mat-line>{{map.name}}</h4>
-          <p mat-line> {{map.date | date}} </p>
+          <p mat-line> {{map.date | date: 'medium'}} </p>
         </mat-list-item>
       </mat-list>
     </div>
