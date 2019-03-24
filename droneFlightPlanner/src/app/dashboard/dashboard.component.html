@@ -1,7 +1,7 @@
 <div>
   <div class="title">
-    <p>Your Drone Flight Planner: </p>
-    <p>{{currentMapName}}</p>
+    <h2>Your Drone Flight Planner: </h2>
+    <h2>{{currentMapName}}</h2>
   </div>
 
   <div class="main">
@@ -16,13 +16,11 @@
         </div>
         <mat-icon mat-list-icon (click)="clearCanvas()">clear</mat-icon>
       </div>
-
-
     </div>
 
     <div class="mapInfo">
       <mat-list>
-        <p mat-subheader>List of Maps created:</p>
+        <h3 mat-subheader>List of Maps created:</h3>
         <mat-list-item *ngFor="let map of maps; index as i" (click)="uploadMap(i)" class="map-list-item">
           <mat-icon mat-list-icon>map</mat-icon>
           <h4 mat-line>{{map.name}}</h4>
